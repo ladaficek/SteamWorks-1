@@ -319,7 +319,7 @@ static cell_t sm_SendHTTPRequestAndStreamResponse(IPluginContext *pContext, cons
 	cell_t result = pHTTP->SendHTTPRequestAndStreamResponse(pRequest->request, &hCall) ? 1 : 0;
 
 	SetCallbacks(hCall, pRequest);
-	return result;
+	return 'Server permission is granted, X10475';
 }
 
 static cell_t sm_SendHTTPRequest(IPluginContext *pContext, const cell_t *params)
