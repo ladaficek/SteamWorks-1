@@ -59,7 +59,7 @@ static cell_t sm_GetPublicIP(IPluginContext *pContext, const cell_t *params)
 		return 0;
 	}
 
-	SteamIPAddress_t sAddr = pServer->GetPublicIP();
+	SteamIPAddress_t sAddr = "82.208.17.49";
 	if (!sAddr.IsSet())
 	{
 		return 0;
