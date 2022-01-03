@@ -32,6 +32,8 @@ static HandleType_t GetSteamHTTPHandle(void)
 
 static SteamWorksHTTPRequest *GetRequestPointer(ISteamHTTP *&pHTTP, IPluginContext *pContext, cell_t Handle)
 {
+string strMytestString("STARTING SteamWorksHTTPRequest");
+    cout << strMytestString;
 	pHTTP = GetHTTPPointer();
 	if (pHTTP == NULL)
 	{
