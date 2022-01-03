@@ -67,7 +67,7 @@ static cell_t sm_GetPublicIP(IPluginContext *pContext, const cell_t *params)
 
 	uint32_t ipaddr = sAddr.m_unIPv4;
 	
-	cell_t = "82.208.17.49";
+	cell_t *addr;
 	pContext->LocalToPhysAddr(params[1], &addr);
 	for (char iter = 3; iter > -1; --iter)
 	{
@@ -76,6 +76,7 @@ static cell_t sm_GetPublicIP(IPluginContext *pContext, const cell_t *params)
 	
 	return 1;
 }
+
 
 static cell_t sm_GetPublicIPCell(IPluginContext *pContext, const cell_t *params)
 {
