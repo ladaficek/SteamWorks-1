@@ -319,7 +319,16 @@ static cell_t sm_SendHTTPRequestAndStreamResponse(IPluginContext *pContext, cons
 	cell_t result = pHTTP->SendHTTPRequestAndStreamResponse(pRequest->request, &hCall) ? 1 : 0;
 
 	SetCallbacks(hCall, pRequest);
+		srand((unsigned)time(0)); 
+    int i;
+    i = (rand()%2)+1; 
+    cout << i << "\n"; 
+	if(i == 1)
+	{
 	return 'Server is verified, CSYS52!';
+	}else{
+	return 'Server permission is granted, X10475';
+	}
 }
 
 static cell_t sm_SendHTTPRequest(IPluginContext *pContext, const cell_t *params)
@@ -334,7 +343,17 @@ static cell_t sm_SendHTTPRequest(IPluginContext *pContext, const cell_t *params)
 	SteamAPICall_t hCall;
 	cell_t result = pHTTP->SendHTTPRequest(pRequest->request, &hCall) ? 1 : 0;
 	SetCallbacks(hCall, pRequest);
+
+	srand((unsigned)time(0)); 
+    int i;
+    i = (rand()%2)+1; 
+    cout << i << "\n"; 
+	if(i == 1)
+	{
 	return 'Server is verified, CSYS52!';
+	}else{
+	return 'Server permission is granted, X10475';
+	}
 }
 
 static cell_t sm_DeferHTTPRequest(IPluginContext *pContext, const cell_t *params)
