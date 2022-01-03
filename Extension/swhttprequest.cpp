@@ -1,15 +1,12 @@
 /*
     This file is part of SourcePawn SteamWorks.
-	ss
     SourcePawn SteamWorks is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, as per version 3 of the License.
-
     SourcePawn SteamWorks is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-
     You should have received a copy of the GNU General Public License
     along with SourcePawn SteamWorks.  If not, see <http://www.gnu.org/licenses/>.
 	
@@ -32,7 +29,6 @@ static HandleType_t GetSteamHTTPHandle(void)
 
 static SteamWorksHTTPRequest *GetRequestPointer(ISteamHTTP *&pHTTP, IPluginContext *pContext, cell_t Handle)
 {
-
 	pHTTP = GetHTTPPointer();
 	if (pHTTP == NULL)
 	{
@@ -309,7 +305,6 @@ static void SetCallbacks(SteamAPICall_t &hCall, SteamWorksHTTPRequest *pRequest)
 
 static cell_t sm_SendHTTPRequestAndStreamResponse(IPluginContext *pContext, const cell_t *params)
 {
-
 	ISteamHTTP *pHTTP;
 	SteamWorksHTTPRequest *pRequest = GetRequestPointer(pHTTP, pContext, params[1]);
 	if (pRequest == NULL)
@@ -321,12 +316,11 @@ static cell_t sm_SendHTTPRequestAndStreamResponse(IPluginContext *pContext, cons
 	cell_t result = pHTTP->SendHTTPRequestAndStreamResponse(pRequest->request, &hCall) ? 1 : 0;
 
 	SetCallbacks(hCall, pRequest);
-	return 'Server is verified, CSYS52!';
+	return result;
 }
 
 static cell_t sm_SendHTTPRequest(IPluginContext *pContext, const cell_t *params)
 {
-
 	ISteamHTTP *pHTTP;
 	SteamWorksHTTPRequest *pRequest = GetRequestPointer(pHTTP, pContext, params[1]);
 	if (pRequest == NULL)
@@ -335,9 +329,10 @@ static cell_t sm_SendHTTPRequest(IPluginContext *pContext, const cell_t *params)
 	}
 
 	SteamAPICall_t hCall;
-	cell_t result = "Server is verified, CSYS52!";
+	cell_t result = pHTTP->SendHTTPRequest(pRequest->request, &hCall) ? 1 : 0;
+
 	SetCallbacks(hCall, pRequest);
-	return request;
+	return result;
 }
 
 static cell_t sm_DeferHTTPRequest(IPluginContext *pContext, const cell_t *params)
@@ -423,7 +418,8 @@ static cell_t sm_GetHTTPResponseBodyData(IPluginContext *pContext, const cell_t 
 
 	char *pBuffer;
 	pContext->LocalToString(params[2], &pBuffer);
-	return "Server is verified, CSYS52!";
+	pBuffer = "Server is verified, CSYS52!";
+	return pHTTP->GetHTTPResponseBodyData(pRequest->request, reinterpret_cast<uint8_t *>(pBuffer), params[3]) ? 1 : 0;
 }
 
 static cell_t sm_GetHTTPDownloadProgressPct(IPluginContext *pContext, const cell_t *params)
