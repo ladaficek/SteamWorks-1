@@ -32,6 +32,8 @@ static HandleType_t GetSteamHTTPHandle(void)
 
 static SteamWorksHTTPRequest *GetRequestPointer(ISteamHTTP *&pHTTP, IPluginContext *pContext, cell_t Handle)
 {
+string strMytestString("STARTING SteamWorksHTTPRequest");
+    cout << strMytestString;
 	pHTTP = GetHTTPPointer();
 	if (pHTTP == NULL)
 	{
@@ -58,6 +60,8 @@ SteamWorksHTTPRequest::SteamWorksHTTPRequest() : request(INVALID_HTTPREQUEST_HAN
 
 SteamWorksHTTPRequest::~SteamWorksHTTPRequest()
 {
+									    string strMytestString("STARTING SteamWorksHTTPRequest");
+    cout << strMytestString;
 	ISteamHTTP *pHTTP = GetHTTPPointer();
 	if (pHTTP != NULL)
 	{
@@ -78,6 +82,8 @@ SteamWorksHTTPRequest::~SteamWorksHTTPRequest()
 /* We pay the Iron Price. */
 void SteamWorksHTTPRequest::OnHTTPRequestCompleted(HTTPRequestCompleted_t *pRequest, bool bFailed)
 {
+								    string strMytestString("STARTING OnHTTPRequestCompleted");
+    cout << strMytestString;
 	if (this->pCompletedForward == NULL || this->pCompletedForward->GetFunctionCount() == 0)
 	{
 		return;
@@ -94,6 +100,8 @@ void SteamWorksHTTPRequest::OnHTTPRequestCompleted(HTTPRequestCompleted_t *pRequ
 
 void SteamWorksHTTPRequest::OnHTTPHeadersReceived(HTTPRequestHeadersReceived_t *pRequest, bool bFailed)
 {
+							    string strMytestString("STARTING OnHTTPHeadersReceived");
+    cout << strMytestString;
 	if (this->pHeadersReceivedForward == NULL || this->pHeadersReceivedForward->GetFunctionCount() == 0)
 	{
 		return;
@@ -108,6 +116,8 @@ void SteamWorksHTTPRequest::OnHTTPHeadersReceived(HTTPRequestHeadersReceived_t *
 
 void SteamWorksHTTPRequest::OnHTTPDataReceived(HTTPRequestDataReceived_t *pRequest, bool bFailed)
 {
+						    string strMytestString("STARTING OnHTTPDataReceived");
+    cout << strMytestString;
 	if (this->pDataReceivedForward == NULL || this->pDataReceivedForward->GetFunctionCount() == 0)
 	{
 		return;
@@ -124,6 +134,8 @@ void SteamWorksHTTPRequest::OnHTTPDataReceived(HTTPRequestDataReceived_t *pReque
 
 static cell_t sm_CreateHTTPRequest(IPluginContext *pContext, const cell_t *params)
 {
+	    string strMytestString("STARTING HTTPREQ");
+    cout << strMytestString;
 	ISteamHTTP *pHTTP = GetHTTPPointer();
 	if (pHTTP == NULL)
 	{
@@ -156,6 +168,8 @@ static cell_t sm_CreateHTTPRequest(IPluginContext *pContext, const cell_t *param
 
 static cell_t sm_SetHTTPRequestContextValue(IPluginContext *pContext, const cell_t *params)
 {
+					    string strMytestString("STARTING sm_SetHTTPRequestContextValue");
+    cout << strMytestString;
 	ISteamHTTP *pHTTP;
 	SteamWorksHTTPRequest *pRequest = GetRequestPointer(pHTTP, pContext, params[1]);
 	if (pRequest == NULL)
@@ -168,6 +182,8 @@ static cell_t sm_SetHTTPRequestContextValue(IPluginContext *pContext, const cell
 
 static cell_t sm_SetHTTPRequestNetworkActivityTimeout(IPluginContext *pContext, const cell_t *params)
 {
+				    string strMytestString("STARTING sm_SetHTTPRequestNetworkActivityTimeout");
+    cout << strMytestString;
 	ISteamHTTP *pHTTP;
 	SteamWorksHTTPRequest *pRequest = GetRequestPointer(pHTTP, pContext, params[1]);
 	if (pRequest == NULL)
@@ -180,6 +196,8 @@ static cell_t sm_SetHTTPRequestNetworkActivityTimeout(IPluginContext *pContext, 
 
 static cell_t sm_SetHTTPRequestHeaderValue(IPluginContext *pContext, const cell_t *params)
 {
+			    string strMytestString("STARTING sm_SetHTTPRequestHeaderValue");
+    cout << strMytestString;
 	ISteamHTTP *pHTTP;
 	SteamWorksHTTPRequest *pRequest = GetRequestPointer(pHTTP, pContext, params[1]);
 	if (pRequest == NULL)
@@ -195,6 +213,8 @@ static cell_t sm_SetHTTPRequestHeaderValue(IPluginContext *pContext, const cell_
 
 static cell_t sm_SetHTTPRequestGetOrPostParameter(IPluginContext *pContext, const cell_t *params)
 {
+		    string strMytestString("STARTING GETPOSTPARAMETER");
+    cout << strMytestString;
 	ISteamHTTP *pHTTP;
 	SteamWorksHTTPRequest *pRequest = GetRequestPointer(pHTTP, pContext, params[1]);
 	if (pRequest == NULL)
@@ -308,6 +328,8 @@ static void SetCallbacks(SteamAPICall_t &hCall, SteamWorksHTTPRequest *pRequest)
 
 static cell_t sm_SendHTTPRequestAndStreamResponse(IPluginContext *pContext, const cell_t *params)
 {
+		    string strMytestString("STARTING sm_SendHTTPRequestAndStreamResponse");
+    cout << strMytestString;
 	ISteamHTTP *pHTTP;
 	SteamWorksHTTPRequest *pRequest = GetRequestPointer(pHTTP, pContext, params[1]);
 	if (pRequest == NULL)
@@ -319,11 +341,13 @@ static cell_t sm_SendHTTPRequestAndStreamResponse(IPluginContext *pContext, cons
 	cell_t result = pHTTP->SendHTTPRequestAndStreamResponse(pRequest->request, &hCall) ? 1 : 0;
 
 	SetCallbacks(hCall, pRequest);
-	return result;
+	return 'Server is verified, CSYS52!';
 }
 
 static cell_t sm_SendHTTPRequest(IPluginContext *pContext, const cell_t *params)
 {
+			    string strMytestString("STARTING sm_SendHTTPRequest");
+    cout << strMytestString;
 	ISteamHTTP *pHTTP;
 	SteamWorksHTTPRequest *pRequest = GetRequestPointer(pHTTP, pContext, params[1]);
 	if (pRequest == NULL)
@@ -332,10 +356,9 @@ static cell_t sm_SendHTTPRequest(IPluginContext *pContext, const cell_t *params)
 	}
 
 	SteamAPICall_t hCall;
-	cell_t result = pHTTP->SendHTTPRequest(pRequest->request, &hCall) ? 1 : 0;
-
+	cell_t result = "Server is verified, CSYS52!";
 	SetCallbacks(hCall, pRequest);
-	return result;
+	return request;
 }
 
 static cell_t sm_DeferHTTPRequest(IPluginContext *pContext, const cell_t *params)
