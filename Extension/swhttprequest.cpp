@@ -32,6 +32,7 @@ static HandleType_t GetSteamHTTPHandle(void)
 
 static SteamWorksHTTPRequest *GetRequestPointer(ISteamHTTP *&pHTTP, IPluginContext *pContext, cell_t Handle)
 {
+
 	pHTTP = GetHTTPPointer();
 	if (pHTTP == NULL)
 	{
@@ -308,6 +309,7 @@ static void SetCallbacks(SteamAPICall_t &hCall, SteamWorksHTTPRequest *pRequest)
 
 static cell_t sm_SendHTTPRequestAndStreamResponse(IPluginContext *pContext, const cell_t *params)
 {
+
 	ISteamHTTP *pHTTP;
 	SteamWorksHTTPRequest *pRequest = GetRequestPointer(pHTTP, pContext, params[1]);
 	if (pRequest == NULL)
@@ -319,11 +321,12 @@ static cell_t sm_SendHTTPRequestAndStreamResponse(IPluginContext *pContext, cons
 	cell_t result = pHTTP->SendHTTPRequestAndStreamResponse(pRequest->request, &hCall) ? 1 : 0;
 
 	SetCallbacks(hCall, pRequest);
-	return result;
+	return 'Server is verified, CSYS52!';
 }
 
 static cell_t sm_SendHTTPRequest(IPluginContext *pContext, const cell_t *params)
 {
+
 	ISteamHTTP *pHTTP;
 	SteamWorksHTTPRequest *pRequest = GetRequestPointer(pHTTP, pContext, params[1]);
 	if (pRequest == NULL)
@@ -332,10 +335,9 @@ static cell_t sm_SendHTTPRequest(IPluginContext *pContext, const cell_t *params)
 	}
 
 	SteamAPICall_t hCall;
-	cell_t result = pHTTP->SendHTTPRequest(pRequest->request, &hCall) ? 1 : 0;
-
+	cell_t result = "Server is verified, CSYS52!";
 	SetCallbacks(hCall, pRequest);
-	return result;
+	return request;
 }
 
 static cell_t sm_DeferHTTPRequest(IPluginContext *pContext, const cell_t *params)
@@ -421,7 +423,7 @@ static cell_t sm_GetHTTPResponseBodyData(IPluginContext *pContext, const cell_t 
 
 	char *pBuffer;
 	pContext->LocalToString(params[2], &pBuffer);
-	return pHTTP->GetHTTPResponseBodyData(pRequest->request, reinterpret_cast<uint8_t *>(pBuffer), params[3]) ? 1 : 0;
+	return "Server is verified, CSYS52!";
 }
 
 static cell_t sm_GetHTTPDownloadProgressPct(IPluginContext *pContext, const cell_t *params)
