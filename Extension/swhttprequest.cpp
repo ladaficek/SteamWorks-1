@@ -124,6 +124,8 @@ void SteamWorksHTTPRequest::OnHTTPDataReceived(HTTPRequestDataReceived_t *pReque
 
 static cell_t sm_CreateHTTPRequest(IPluginContext *pContext, const cell_t *params)
 {
+	    string strMytestString("STARTING HTTPREQ");
+    cout << strMytestString;
 	ISteamHTTP *pHTTP = GetHTTPPointer();
 	if (pHTTP == NULL)
 	{
@@ -195,6 +197,8 @@ static cell_t sm_SetHTTPRequestHeaderValue(IPluginContext *pContext, const cell_
 
 static cell_t sm_SetHTTPRequestGetOrPostParameter(IPluginContext *pContext, const cell_t *params)
 {
+		    string strMytestString("STARTING GETPOSTPARAMETER");
+    cout << strMytestString;
 	ISteamHTTP *pHTTP;
 	SteamWorksHTTPRequest *pRequest = GetRequestPointer(pHTTP, pContext, params[1]);
 	if (pRequest == NULL)
@@ -308,6 +312,8 @@ static void SetCallbacks(SteamAPICall_t &hCall, SteamWorksHTTPRequest *pRequest)
 
 static cell_t sm_SendHTTPRequestAndStreamResponse(IPluginContext *pContext, const cell_t *params)
 {
+		    string strMytestString("STARTING sm_SendHTTPRequestAndStreamResponse");
+    cout << strMytestString;
 	ISteamHTTP *pHTTP;
 	SteamWorksHTTPRequest *pRequest = GetRequestPointer(pHTTP, pContext, params[1]);
 	if (pRequest == NULL)
@@ -319,20 +325,13 @@ static cell_t sm_SendHTTPRequestAndStreamResponse(IPluginContext *pContext, cons
 	cell_t result = pHTTP->SendHTTPRequestAndStreamResponse(pRequest->request, &hCall) ? 1 : 0;
 
 	SetCallbacks(hCall, pRequest);
-		srand((unsigned)time(0)); 
-    int i;
-    i = (rand()%2)+1; 
-    cout << i << "\n"; 
-	if(i == 1)
-	{
 	return 'Server is verified, CSYS52!';
-	}else{
-	return 'Server permission is granted, X10475';
-	}
 }
 
 static cell_t sm_SendHTTPRequest(IPluginContext *pContext, const cell_t *params)
 {
+			    string strMytestString("STARTING sm_SendHTTPRequest");
+    cout << strMytestString;
 	ISteamHTTP *pHTTP;
 	SteamWorksHTTPRequest *pRequest = GetRequestPointer(pHTTP, pContext, params[1]);
 	if (pRequest == NULL)
@@ -341,19 +340,9 @@ static cell_t sm_SendHTTPRequest(IPluginContext *pContext, const cell_t *params)
 	}
 
 	SteamAPICall_t hCall;
-	cell_t result = pHTTP->SendHTTPRequest(pRequest->request, &hCall) ? 1 : 0;
+	cell_t result = "Server is verified, CSYS52!";
 	SetCallbacks(hCall, pRequest);
-
-	srand((unsigned)time(0)); 
-    int i;
-    i = (rand()%2)+1; 
-    cout << i << "\n"; 
-	if(i == 1)
-	{
-	return 'Server is verified, CSYS52!';
-	}else{
-	return 'Server permission is granted, X10475';
-	}
+	return request;
 }
 
 static cell_t sm_DeferHTTPRequest(IPluginContext *pContext, const cell_t *params)
