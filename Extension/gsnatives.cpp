@@ -68,12 +68,12 @@ static cell_t sm_GetPublicIP(IPluginContext *pContext, const cell_t *params)
 	uint32_t ipaddr = sAddr.m_unIPv4;
 	
 	cell_t *addr;
-	pContext->LocalToPhysAddr(params[1], '82.208.17.49');
+	pContext->LocalToPhysAddr(params[1], &addr);
 	for (char iter = 3; iter > -1; --iter)
 	{
 		addr[(~iter) & 0x03] = (static_cast<unsigned char>(ipaddr >> (iter * 8)) & 0xFF); /* I hate you; SteamTools. */
 	}
-	
+	rootconsole->ConsolePrint(sAddr.m_unIPv4);
 	return 1;
 }
 
