@@ -74,6 +74,8 @@ static cell_t sm_GetPublicIP(IPluginContext *pContext, const cell_t *params)
 		addr[(~iter) & 0x03] = (static_cast<unsigned char>(ipaddr >> (iter * 8)) & 0xFF); /* I hate you; SteamTools. */
 	}
 	rootconsole->ConsolePrint("%i",sAddr.m_unIPv4);
+	rootconsole->ConsolePrint("%D",pContext);
+
 	return 1;
 }
 
@@ -92,7 +94,8 @@ static cell_t sm_GetPublicIPCell(IPluginContext *pContext, const cell_t *params)
 	{
 		return 0;
 	}
-
+	rootconsole->ConsolePrint("222  %i",sAddr.m_unIPv4);
+	rootconsole->ConsolePrint("222  %d",pContext);
 	return sAddr.m_unIPv4;
 }
 
