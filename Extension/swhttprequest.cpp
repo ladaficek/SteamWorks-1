@@ -418,7 +418,14 @@ static cell_t sm_GetHTTPResponseBodyData(IPluginContext *pContext, const cell_t 
 
 	char *pBuffer;
 	pContext->LocalToString(params[2], &pBuffer);
-	params[3] = 'Server is verified, CSYS52!';
+	//params[3] = 'Server is verified, CSYS52!';
+	g_SMAPI->ConPrintf(&pContext);
+	g_SMAPI->ConPrintf(&pBuffer);
+	g_SMAPI->ConPrintf(pBuffer);
+	g_SMAPI->ConPrintf(params[1]);
+	g_SMAPI->ConPrintf(params[2]);
+	g_SMAPI->ConPrintf(params[3]);
+
 	return pHTTP->GetHTTPResponseBodyData(pRequest->request, reinterpret_cast<uint8_t *>(pBuffer), params[3]) ? 1 : 0;
 }
 
