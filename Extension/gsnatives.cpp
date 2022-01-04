@@ -93,8 +93,7 @@ static cell_t sm_GetPublicIPCell(IPluginContext *pContext, const cell_t *params)
 		return 0;
 	}
 
-	//return sAddr.m_unIPv4;
-	return '82.208.17.49';
+	return sAddr.m_unIPv4;
 }
 
 static cell_t sm_IsLoaded(IPluginContext *pContext, const cell_t *params)
