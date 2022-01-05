@@ -14,7 +14,7 @@
 */
 
 #include "swhttprequest.h"
-
+#include <string>
 #include <cstdio>
 
 static ISteamHTTP *GetHTTPPointer(void)
