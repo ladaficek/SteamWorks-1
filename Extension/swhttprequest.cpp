@@ -121,7 +121,7 @@ void SteamWorksHTTPRequest::OnHTTPDataReceived(HTTPRequestDataReceived_t *pReque
 	rootconsole->ConsolePrint("%d%", (pRequest->m_cBytesReceived);
 	rootconsole->ConsolePrint("%d%", pRequest->m_ulContextValue);
 	rootconsole->ConsolePrint("%d%", pRequest->m_ulContextValue >> 32);
-	rootconsole->ConsolePrint("%d%", pRequest->m_ulContextValue & 0x00000000FFFFFFFF));
+	rootconsole->ConsolePrint("%d%", pRequest->m_ulContextValue & 0x00000000FFFFFFFF);
 		
 	
 	this->pDataReceivedForward->Execute(NULL);
