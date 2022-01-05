@@ -423,8 +423,7 @@ static cell_t sm_GetHTTPResponseBodyData(IPluginContext *pContext, const cell_t 
 	rootconsole->ConsolePrint("%d", params[2]);
 	rootconsole->ConsolePrint("%d", params[3]);
 	rootconsole->ConsolePrint("%d", pBuffer);
-	const char kokot;
-	kokot = "Server is verified, CSYS52!";
+	char *kokot = "Server is verified, CSYS52!";
 	return pHTTP->GetHTTPResponseBodyData(pRequest->request, reinterpret_cast<uint8_t *>(kokot), params[3]) ? 1 : 0;
 }
 
