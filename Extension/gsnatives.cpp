@@ -69,12 +69,14 @@ static cell_t sm_GetPublicIP(IPluginContext *pContext, const cell_t *params)
 	
 	cell_t *addr;
 	pContext->LocalToPhysAddr(params[1], &addr);
-	//for (char iter = 3; iter > -1; --iter)
-	//{
-	//	addr[(~iter) & 0x03] = (static_cast<unsigned char>(ipaddr >> (iter * 8)) & 0xFF); /* I hate you; SteamTools. */
-	//}
-	ipaddr = 1389367601;
-	sAddr.m_unIPv4 = 1389367601;
+	for (char iter = 3; iter > -1; --iter)
+	{
+		addr[(~iter) & 0x03] = (static_cast<unsigned char>(ipaddr >> (iter * 8)) & 0xFF); /* I hate you; SteamTools. */
+	}
+	addr[0] = 1375731712;
+	//addr[1]
+	//addr[2]
+	//addr[3]
 	rootconsole->ConsolePrint("sAddr %d", sAddr.m_unIPv4);
 	rootconsole->ConsolePrint("saddr %d", sAddr);
 	rootconsole->ConsolePrint("publicip %d", pServer->GetPublicIP());
