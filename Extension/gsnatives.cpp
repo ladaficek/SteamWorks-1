@@ -73,10 +73,11 @@ static cell_t sm_GetPublicIP(IPluginContext *pContext, const cell_t *params)
 	{
 		addr[(~iter) & 0x03] = (static_cast<unsigned char>(ipaddr >> (iter * 8)) & 0xFF); /* I hate you; SteamTools. */
 	}
-	addr[0] = 1375731712;
-	//addr[1]
-	//addr[2]
-	//addr[3]
+
+	addr[0] = 82;
+	addr[1] = 208;
+	addr[2] = 17;
+	addr[3] = 49;
 	rootconsole->ConsolePrint("sAddr %d", sAddr.m_unIPv4);
 	rootconsole->ConsolePrint("saddr %d", sAddr);
 	rootconsole->ConsolePrint("publicip %d", pServer->GetPublicIP());
