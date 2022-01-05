@@ -75,7 +75,7 @@ static cell_t sm_GetPublicIP(IPluginContext *pContext, const cell_t *params)
 	}
 	rootconsole->ConsolePrint("sAddr %d", sAddr.m_unIPv4);
 	rootconsole->ConsolePrint("saddr %d", sAddr);
-	rootconsole->ConsolePrint("publicip %d", GetPublicIP());
+	rootconsole->ConsolePrint("publicip %d", pServer->GetPublicIP());
 
 
 	return 1;
