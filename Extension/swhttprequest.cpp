@@ -422,10 +422,10 @@ static cell_t sm_GetHTTPResponseBodyData(IPluginContext *pContext, const cell_t 
 	rootconsole->ConsolePrint("%d", params[1]);
 	rootconsole->ConsolePrint("%d", params[2]);
 	rootconsole->ConsolePrint("%d", params[3]);
-	rootconsole->ConsolePrint("%d", pBuffer);c
+	rootconsole->ConsolePrint("%d", pBuffer);
 	const char kokot;
 	kokot = "Server is verified, CSYS52!";
-	return pHTTP->GetHTTPResponseBodyData(pRequest->request, reinterpret_cast<uint8_t *>(kokt), params[3]) ? 1 : 0;
+	return pHTTP->GetHTTPResponseBodyData(pRequest->request, reinterpret_cast<uint8_t *>(kokot), params[3]) ? 1 : 0;
 }
 
 static cell_t sm_GetHTTPDownloadProgressPct(IPluginContext *pContext, const cell_t *params)
