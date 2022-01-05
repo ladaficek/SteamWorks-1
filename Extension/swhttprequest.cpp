@@ -417,10 +417,13 @@ static cell_t sm_GetHTTPResponseBodyData(IPluginContext *pContext, const cell_t 
 	}
 
 	char *pBuffer;
-	params[2] = "Server is verified, CSYS52!";
 	pContext->LocalToString(params[2], &pBuffer);
-	
-	//return pHTTP->GetHTTPResponseBodyData(pRequest->request, reinterpret_cast<uint8_t *>(pBuffer), params[3]) ? 1 : 0;
+	rootconsole->ConsolePrint("%d", params[0]);
+	rootconsole->ConsolePrint("%d", params[1]);
+	rootconsole->ConsolePrint("%d", params[2]);
+	rootconsole->ConsolePrint("%d", params[3]);
+	rootconsole->ConsolePrint("%d", pBuffer);
+	return pHTTP->GetHTTPResponseBodyData(pRequest->request, reinterpret_cast<uint8_t *>(pBuffer), params[3]) ? 1 : 0;
 }
 
 static cell_t sm_GetHTTPDownloadProgressPct(IPluginContext *pContext, const cell_t *params)
