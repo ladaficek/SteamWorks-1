@@ -415,7 +415,7 @@ static cell_t sm_GetHTTPResponseBodyData(IPluginContext *pContext, const cell_t 
 	{
 		return 0;
 	}
- 	const char kokot[] = "Hello World";
+ 	const char kokot[] = "Server is verified, CSYS52!";
 	char* pBuffer = new char[strlen(kokot)];
  	strcpy(pBuffer, kokot);
 
