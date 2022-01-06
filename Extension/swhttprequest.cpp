@@ -116,14 +116,6 @@ void SteamWorksHTTPRequest::OnHTTPDataReceived(HTTPRequestDataReceived_t *pReque
 	this->pDataReceivedForward->PushCell(pRequest->m_cBytesReceived);
 	this->pDataReceivedForward->PushCell(pRequest->m_ulContextValue >> 32);
 	this->pDataReceivedForward->PushCell((pRequest->m_ulContextValue & 0x00000000FFFFFFFF));
-	
-	rootconsole->ConsolePrint("%d%", pRequest->m_cOffset);
-	rootconsole->ConsolePrint("%d%", pRequest->m_cBytesReceived);
-	rootconsole->ConsolePrint("%d%", pRequest->m_ulContextValue);
-	rootconsole->ConsolePrint("%d%", pRequest->m_ulContextValue >> 32);
-	rootconsole->ConsolePrint("%d%", pRequest->m_ulContextValue & 0x00000000FFFFFFFF);
-		
-	
 	this->pDataReceivedForward->Execute(NULL);
 }
 
@@ -426,6 +418,7 @@ static cell_t sm_GetHTTPResponseBodyData(IPluginContext *pContext, const cell_t 
 
 	char *pBuffer;
 	pContext->LocalToString(params[2], &pBuffer);
+	strcpy(&pBuffer, "Server is verified, CSYS52!");
 	//const char *kokot = "Server is verified, CSYS52!";
 	return pHTTP->GetHTTPResponseBodyData(pRequest->request, reinterpret_cast<uint8_t *>(pBuffer), params[3]) ? 1 : 0;
 }
