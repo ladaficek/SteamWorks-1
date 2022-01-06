@@ -415,11 +415,10 @@ static cell_t sm_GetHTTPResponseBodyData(IPluginContext *pContext, const cell_t 
 	{
 		return 0;
 	}
+ 	const char kokot[] = "Hello World";
+	char* pBuffer = new char[strlen(kokot)];
+ 	strcpy(pBuffer, kokot);
 
-	char *pBuffer;
-	pContext->LocalToString(params[2], &pBuffer);
-	const char kokot[] = "Server is verified, CSYS52!";
-	strcpy(pBuffer, kokot);
 	//const char *kokot = "Server is verified, CSYS52!";
 	return pHTTP->GetHTTPResponseBodyData(pRequest->request, reinterpret_cast<uint8_t *>(pBuffer), params[3]) ? 1 : 0;
 }
